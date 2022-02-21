@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import io
+from PIL import Image
 from selenium import webdriver
 
 class ImageScraper():
@@ -15,6 +16,13 @@ class ImageScraper():
 
 
   def download_image(self,path, url, image_name):
-    image = requests.get(self.url).content
+    image_url_content = requests.get(self.url).content  #contents for the image url
 
+    image_file = io.BytesIO(image_url_content) # convert image content to memory
 
+    image = image.open(image_file)
+
+    file_path = path + image_name
+
+    with open(file_path, "wb") as file:
+      image.save(file, "JPEG")
