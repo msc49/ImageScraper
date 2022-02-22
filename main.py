@@ -49,13 +49,14 @@ class ImageScraper():
     wd.get(self.google_url)
 
     images_urls = set()
+    skips = 0
 
     while len(images_urls) < maximum_images:
       self.scroll(wd)
 
       image_thumbnails = wd.find_element(By.CLASS_NAME, "Q4LuWd") #if you use inspect, you'll see each google image has that class name
 
-      for img in image_thumbnails[len(images_urls): maximum_images]:
+      for img in image_thumbnails[len(images_urls)+  skips:maximum_images]:
         try:
           img.click()
           img.sleep(1)
