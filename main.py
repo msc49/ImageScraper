@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
 import requests
 import io
 import time 
@@ -7,8 +7,9 @@ from selenium import webdriver
 
 class ImageScraper():
 
-  def __init__(self, image_url):
-    self.image_url = image_url #url of images
+  def __init__(self, google_url):
+    
+    self.google_url = google_url #url of images
 
     self.path = "/Users/Shahzaib/Desktop/images/chromedriver" # where we will store image
 
@@ -21,7 +22,7 @@ class ImageScraper():
     try: 
     
       wd = webdriver.Chrome(self.path)
-      image_url_content = requests.get(self.image_url).content  #contents for the image url
+      image_url_content = requests.get(self.image_url).content  #contents for the image url CHANGEEEE
       image_file = io.BytesIO(image_url_content) # convert image content to memory as binary data
       image = Image.open(image_file) #converts binary data to PIL image
       file_path = self.path + image_name
@@ -40,6 +41,21 @@ class ImageScraper():
     '''
     wd.execute("window.scrollTo(0,document.body.scrollHeight);")
     time.sleep(0.5)
+
+
+  def get_google_image(self, maximum_images):
+    wd = webdriver.Chrome(self.path)
+    self.scroll(wd)
+    wd.get(self.google_url)
+
+    images_urls = set()
+
+    while Len(images_urls) < maximum_images:
+      self.scroll(wd)
+
+
+
+
 
 
 
