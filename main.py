@@ -16,20 +16,26 @@ class ImageScraper():
 
 
   def download_image(self, image_name):
+
+    try: 
     
-    wd = webdriver.Chrome(self.path)
-    image_url_content = requests.get(self.image_url).content  #contents for the image url
-    
-    image_file = io.BytesIO(image_url_content) # convert image content to memory
+      wd = webdriver.Chrome(self.path)
+      image_url_content = requests.get(self.image_url).content  #contents for the image url
+      
+      image_file = io.BytesIO(image_url_content) # convert image content to memory as binary data
 
-    image = Image.open(image_file)
+      image = Image.open(image_file) #converts binary data to PIL image
 
-    file_path = self.path + image_name
+      file_path = self.path + image_name
 
-    with open(file_path, "wb") as file:
-      image.save(file, "JPEG")
+      with open(file_path, "wb") as file:
+        image.save(file, "JPEG")
 
-    print("successful")
+    except:
+
+      print('FAILURE- DOWNLOAD IMAGE METHOD DOES DOES NOT WORK')
+
+
 
   
 
