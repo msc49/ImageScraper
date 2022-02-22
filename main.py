@@ -50,7 +50,7 @@ class ImageScraper():
 
     images_urls = set()
 
-    while Len(images_urls) < maximum_images:
+    while len(images_urls) < maximum_images:
       self.scroll(wd)
 
 
