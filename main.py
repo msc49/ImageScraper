@@ -74,7 +74,7 @@ class ImageScraper():
 
           if image.get_attribute('src') and 'http' in image.get_attribute('src'):
             images_urls.add(image.get_attribute('src'))
-            print(f"Found {len(image_urls)}")
+            print(f"Found {len(images_urls)}")
 
 
     return images_urls
