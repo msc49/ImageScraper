@@ -56,7 +56,7 @@ class ImageScraper():
 
       image_thumbnails = wd.find_element(By.CLASS_NAME, "Q4LuWd") #if you use inspect, you'll see each google image has that class name
 
-      for img in image_thumbnails[len(images_urls)+  skips:maximum_images]:
+      for img in image_thumbnails[len(images_urls) +  skips:maximum_images]:
         try:
           img.click()
           img.sleep(1)
@@ -68,14 +68,14 @@ class ImageScraper():
         images = wd.find_elements(By.CLASS_NAME, "n3VNCb")
         for image in images:
           if image.get_attribute('src') in images_urls:
-            max_images += 1
+            maximum_images += 1
             skips += 1
             break
 
 
           if image.get_attribute('src') and 'http' in image.get_attribute('src'):
             images_urls.add(image.get_attribute('src'))
-            print(f"Found {len(images_urls)}")
+            
 
 
     return images_urls
