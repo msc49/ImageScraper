@@ -35,11 +35,11 @@ class ImageScraper():
 
 
 
-  def scroll(wd):
+  def scroll(self, wd):
     '''
     scrolls down the page
     '''
-    wd.execute("window.scrollTo(0,document.body.scrollHeight);")
+    wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(0.5)
 
 
@@ -80,7 +80,7 @@ class ImageScraper():
     return images_urls
 
     for i, url in enumerate(images_urls):
-      download_image("imgs/", url, str(i) + ".jpg")
+      download_image(str(i) + ".jpg")
 
     wd.quit()
 
@@ -90,3 +90,5 @@ class ImageScraper():
 
 
   
+t= ImageScraper("https://www.google.com/search?q=cats&tbm=isch&ved=2ahUKEwjErt2phZP2AhW18rsIHUD-AwsQ2-cCegQIABAA&oq=cats&gs_lcp=CgNpbWcQAzIECAAQQzIHCAAQsQMQQzIECAAQQzIKCAAQsQMQgwEQQzIECAAQQzIECAAQQzIHCAAQsQMQQzIECAAQQzIICAAQgAQQsQMyCAgAEIAEELEDOgUIABCABDoLCAAQgAQQsQMQgwFQwwdYqQtg5wxoAHAAeACAAUqIAbMCkgEBNZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=y7IUYoSdNbXl7_UPwPyPWA&bih=821&biw=1440")
+t.get_google_image(5)
