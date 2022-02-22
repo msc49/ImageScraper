@@ -59,7 +59,7 @@ class ImageScraper():
       for img in image_thumbnails[len(images_urls) +  skips:maximum_images]:
         try:
           img.click()
-          img.sleep(1)
+          # img.sleep(1)
 
         except:
           continue
@@ -91,5 +91,3 @@ class ImageScraper():
 
 
   
-t= ImageScraper("https://www.google.com/search?q=cats&tbm=isch&ved=2ahUKEwjErt2phZP2AhW18rsIHUD-AwsQ2-cCegQIABAA&oq=cats&gs_lcp=CgNpbWcQAzIECAAQQzIHCAAQsQMQQzIECAAQQzIKCAAQsQMQgwEQQzIECAAQQzIECAAQQzIHCAAQsQMQQzIECAAQQzIICAAQgAQQsQMyCAgAEIAEELEDOgUIABCABDoLCAAQgAQQsQMQgwFQwwdYqQtg5wxoAHAAeACAAUqIAbMCkgEBNZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=y7IUYoSdNbXl7_UPwPyPWA&bih=821&biw=1440")
-t.get_google_image(5)
