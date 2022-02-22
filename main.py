@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import io
+import time 
 from PIL import Image
 from selenium import webdriver
 
@@ -24,12 +25,21 @@ class ImageScraper():
       image_file = io.BytesIO(image_url_content) # convert image content to memory as binary data
       image = Image.open(image_file) #converts binary data to PIL image
       file_path = self.path + image_name
-      
+
       with open(file_path, "wb") as file:
         image.save(file, "JPEG")
 
     except:
       print('FAILURE- DOWNLOAD IMAGE METHOD DOES DOES NOT WORK')
+
+
+
+  def scroll(wd):
+    '''
+    scrolls down the page
+    '''
+    wd.execute("window.scrollTo(0,document.body.scrollHeight);")
+    time.sleep(0.5)
 
 
 
