@@ -16,14 +16,15 @@ class ImageScraper():
 
 
   def download_image(self, image_name):
+    
     wd = webdriver.Chrome(self.path)
     image_url_content = requests.get(self.image_url).content  #contents for the image url
-
+    
     image_file = io.BytesIO(image_url_content) # convert image content to memory
 
     image = Image.open(image_file)
 
-    file_path = path + image_name
+    file_path = self.path + image_name
 
     with open(file_path, "wb") as file:
       image.save(file, "JPEG")
@@ -32,5 +33,5 @@ class ImageScraper():
 
   
 
-t= ImageScraper("https://en.wikipedia.org/wiki/Van_cat#/media/File:VAN_CAT.png")
-t.download_image('cat_image')
+t= ImageScraper("https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png")
+t.download_image('cat')
